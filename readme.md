@@ -4,7 +4,8 @@ This is a simple python/flask app to control `v4l2-ctl`. If you're here you know
 
 - The homepage provides sliders automagically
 - `/get` dumps a json state parsed from `v4l2-ctl -C`
-- `/set?CTL=VAL` sets the `VAL` for the `CTL` with `v4l2-ctl -c CTL=VAL`
+- `/set?CTL=VAL` sets the `VAL` for the `CTL` with `v4l2-ctl -c CTL=VAL` 
+    - can be chained as expected e.g. `/set?CTL1=VAl1&CTL2=VAL2`
 
 ## Reqs
 
