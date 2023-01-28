@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>v4l2_web_ctl</title>
+    <script src="/static/jquery.js"></script>
+    
+
+
+</head>
+<body>
+
+    <div id="ctls">
+
+
+    </div>
+    <script>
+        $.get("/get",(data)=>{
+            ctls = JSON.parse(data)
+            console.log(ctls)
+
+            out = "<table>"
+            for (c in ctls){
+                //for (cc in ctls[c]) out+= `${cc} `
+                if ("min" in ctls[c]) out += `<tr><td>${c}</td>
+                    <td><input type="range" min="${ctls[c]['min']}" max="${ctls[c]['max']}" value="${ctls[c]['value']}" id="${c}"></td><td id="${c}_val">${ctls[c]['value']}</td></tr>`
+            }
+
+            $("#ctls").html(out)
+
+            $(":input").change((e)=>{
+                ctl  = e['target']['id']
+                val = $(`#${ctl}`).val()
+                $.get(`/set?${ctl}=${val}`,(d)=>console.log(d))
+                $(`#${ctl}_val`).html(val) 
+            })
+
+
+            out+="</table>"
+
+        })
+    </script>
+
+</body>
+</html>
