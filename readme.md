@@ -19,3 +19,6 @@ flask, so `python -m pip install flask`
 
 Go to `http://your_up:PORT`
 
+## To install service
+
+`bash install_systemd.sh` , and it will run on `port 7000` we say otherwise per above (change in `start.sh`) 
