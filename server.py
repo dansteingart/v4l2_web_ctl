@@ -10,7 +10,7 @@ except: PORT = 7000
 app = Flask(__name__)
 
 def get_ctrls():
-    out = [o.strip() for o in go("v4l2-ctl -l").split("\n")]
+    out = [o.strip() for o in go("v4l2-ctl -l").split("\n") if o.find(":")>-1]
     aa = {}
     for o in out: 
         key = o.split()[0] 
