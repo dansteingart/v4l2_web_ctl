@@ -19,7 +19,12 @@ def get_ctrls():
         vd = {}
         for v in values: 
             try: vv = int(v.split("=")[1])
-            except: vv = v.split("=")[1]
+            except: 
+                try: vv = v.split("=")[1]
+                except: vv = "nope"
+                    
+
+            
             vd[v.split("=")[0]] = vv
             aa[key] = vd
 
